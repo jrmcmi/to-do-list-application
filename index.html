@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>Tasks</h1>
+    <p>Manage your to-do list</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-pill">Total <strong id="s-total">0</strong></div>
+    <div class="stat-pill">Pending <strong id="s-pending">0</strong></div>
+    <div class="stat-pill">On-going <strong id="s-ongoing">0</strong></div>
+    <div class="stat-pill">Done <strong id="s-done">0</strong></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">New Task</div>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" id="new-title" placeholder="What needs to be done?"/>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="new-desc" placeholder="Optional details..."></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="createTask()">Add Task</button>
+    <div id="msg"></div>
+  </div>
+
+  <div class="card task-card">
+    <div class="card-label">All Tasks</div>
+    <div class="task-list" id="task-list">
+      <div class="empty">Loading...</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Edit Task</h2>
+      <button class="btn-close" onclick="closeModal()">X</button>
+    </div>
+    <input type="hidden" id="edit-id"/>
+    <div class="form-group"><label>Title</label><input type="text" id="edit-title"/></div>
+    <div class="form-group"><label>Description</label><textarea id="edit-desc"></textarea></div>
+    <div class="form-group">
+      <label>Status</label>
+      <select id="edit-status">
+        <option value="pending">Pending</option>
+        <option value="on-going">On-going</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="updateTask()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
